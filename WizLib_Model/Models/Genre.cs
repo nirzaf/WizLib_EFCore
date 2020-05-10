@@ -10,6 +10,6 @@ namespace WizLib_Model.Models
     {
         public int GenreId { get; set; }
         public string GenreName { get; set; }
-        public int DisplayOrder { get; set; }
+        //public int DisplayOrder { get; set; }
     }
 }
