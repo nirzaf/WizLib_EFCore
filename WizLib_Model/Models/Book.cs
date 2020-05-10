@@ -19,8 +19,5 @@ namespace WizLib_Model.Models
         public string ISBN { get; set; }
         [Required]
         public double Price { get; set; }
-
-        [NotMapped]
-        public string PriceRange { get; set; }
     }
 }
