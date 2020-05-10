@@ -32,6 +32,21 @@ namespace WizLib_DataAccess.Migrations
 
                     b.ToTable("Categories");
                 });
+
+            modelBuilder.Entity("WizLib_Model.Models.Genre", b =>
+                {
+                    b.Property<int>("GenreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GenreName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenreId");
+
+                    b.ToTable("Genres");
+                });
 #pragma warning restore 612, 618
         }
     }
