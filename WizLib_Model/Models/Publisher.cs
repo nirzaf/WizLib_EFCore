@@ -17,5 +17,7 @@ namespace WizLib_Model.Models
 
         [Required]
         public string Location { get; set; }
+
+        public List<Book> Books { get; set; }
     }
 }
