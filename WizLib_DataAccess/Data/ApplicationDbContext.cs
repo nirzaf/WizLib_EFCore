@@ -23,6 +23,9 @@ namespace WizLib_DataAccess.Data
         public DbSet<BookAuthor> BookAuthors { get; set; }
 
         public DbSet<Fluent_BookDetail> Fluent_BookDetails { get; set; }
+        public DbSet<Fluent_Book> Fluent_Books { get; set; }
+        public DbSet<Fluent_Author> Fluent_Authors { get; set; }
+        public DbSet<Fluent_Publisher> fluent_Publishers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +38,25 @@ namespace WizLib_DataAccess.Data
             //BookDetails
             modelBuilder.Entity<Fluent_BookDetail>().HasKey(b => b.BookDetail_Id);
             modelBuilder.Entity<Fluent_BookDetail>().Property(b => b.NumberOfChapters).IsRequired();
+
+
+            //Book
+            modelBuilder.Entity<Fluent_Book>().HasKey(b => b.Book_Id);
+            modelBuilder.Entity<Fluent_Book>().Property(b => b.ISBN).IsRequired().HasMaxLength(15);
+            modelBuilder.Entity<Fluent_Book>().Property(b => b.Title).IsRequired();
+            modelBuilder.Entity<Fluent_Book>().Property(b => b.Price).IsRequired();
+
+
+            //Author
+            modelBuilder.Entity<Fluent_Author>().HasKey(b => b.Author_Id);
+            modelBuilder.Entity<Fluent_Author>().Property(b => b.FirstName).IsRequired();
+            modelBuilder.Entity<Fluent_Author>().Property(b => b.LastName).IsRequired();
+            modelBuilder.Entity<Fluent_Author>().Ignore(b => b.FullName);
+
+            //Publisher
+            modelBuilder.Entity<Fluent_Publisher>().HasKey(b => b.Publisher_Id);
+            modelBuilder.Entity<Fluent_Publisher>().Property(b => b.Name).IsRequired();
+            modelBuilder.Entity<Fluent_Publisher>().Property(b => b.Location).IsRequired();
         }
     }
 }
