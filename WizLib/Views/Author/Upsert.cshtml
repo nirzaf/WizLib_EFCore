@@ -38,7 +38,14 @@
                     <label asp-for="BirthDate"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="BirthDate" value="" placeholder="mm/dd/yyyy" id="datepicker_dob" type="text" class="form-control" />
+                    @if (Model.Author_Id != 0)
+                    {
+                        <input asp-for="BirthDate" placeholder="mm/dd/yyyy" id="datepicker_dob" type="text" class="form-control" />
+                    }
+                    else
+                    {
+                        <input asp-for="BirthDate" value="" placeholder="mm/dd/yyyy" id="datepicker_dob" type="text" class="form-control" />
+                    }
                     <span asp-validation-for="BirthDate" class="text-danger"></span>
                 </div>
             </div>

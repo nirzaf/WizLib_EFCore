@@ -21,28 +21,54 @@ namespace WizLib.Controllers
 
         public IActionResult Index()
         {
-           
-            return View();
+            List<Publisher> objList = _db.Publishers.ToList();
+            return View(objList);
         }
 
         public IActionResult Upsert(int? id)
         {
-         
-            return View();
+            Publisher obj = new Publisher();
+            if (id == null)
+            {
+                return View(obj);
+            }
+            //this for edit
+            obj = _db.Publishers.FirstOrDefault(u => u.Publisher_Id == id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Category obj)
+        public IActionResult Upsert(Publisher obj)
         {
-            
-            return View();
-            
+            if (ModelState.IsValid)
+            {
+                if (obj.Publisher_Id == 0)
+                {
+                    //this is create
+                    _db.Publishers.Add(obj);
+                }
+                else
+                {
+                    //this is an update
+                    _db.Publishers.Update(obj);
+                }
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(obj);
+
         }
 
         public IActionResult Delete(int id)
         {
-            
+            var objFromDb = _db.Publishers.FirstOrDefault(u => u.Publisher_Id == id);
+            _db.Publishers.Remove(objFromDb);
+            _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
     }
