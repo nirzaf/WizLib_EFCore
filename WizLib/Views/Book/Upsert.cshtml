@@ -1,0 +1,80 @@
+﻿@model WizLib_Model.ViewModels.BookVM
+@{
+    var title = "Create Book";
+}
+<form method="post">
+    <div class="row p-3 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Book.Book_Id" />
+        @if (Model.Book != null)
+        {
+            //edit
+            title = "Edit Book";
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8 pt-4">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Book.Title"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Book.Title" class="form-control" />
+                    <span asp-validation-for="Book.Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Book.ISBN"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Book.ISBN" class="form-control" />
+                    <span asp-validation-for="Book.ISBN" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Book.Price"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Book.Price" class="form-control" />
+                    <span asp-validation-for="Book.Price" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Book.Publisher_Id"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(u => u.Book.Publisher_Id, Model.PublisherList, "--Publisher List--",
+                        new { @class = "form-control" })
+                    <span asp-validation-for="Book.Publisher_Id" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 offset-4">
+                    @if (Model.Book == null)
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Create</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Update</button>
+                    }
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+}
