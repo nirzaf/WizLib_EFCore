@@ -23,5 +23,21 @@ namespace WizLib.Controllers
             List<Category> objList = _db.Categories.ToList();
             return View(objList);
         }
+
+        public IActionResult Upsert(int? id)
+        {
+            Category obj = new Category();
+            if (id == null)
+            {
+                return View(obj);
+            }
+            //this for edit
+            obj = _db.Categories.FirstOrDefault(u => u.Category_Id == id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
     }
 }
