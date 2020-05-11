@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WizLib_Model.Models.Publisher>
+
+<br />
+<br />
+<div class="border p-4 bg-white">
+    <div class="row">
+        <div class="col-10">
+            <h2 class="text-info"> Publisher List</h2>
+        </div>
+        <div class="col-2 text-right">
+            <a asp-action="Upsert" class="btn btn-info form-control"> Create New </a>
+        </div>
+    </div>
+    <br />
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        Publisher Name
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Location
+                        </td>
+                        <td>
+                            <a class="btn btn-primary text-white" asp-action="Upsert" asp-route-Id="@item.Publisher_Id">
+                                Edit
+                            </a>
+
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@item.Publisher_Id">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No publisher exists...</p>
+        }
+    </div>
+</div>
