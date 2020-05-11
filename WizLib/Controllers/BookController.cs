@@ -47,35 +47,30 @@ namespace WizLib.Controllers
             return View(obj);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Upsert(Author obj)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (obj.Author_Id == 0)
-        //        {
-        //            //this is create
-        //            _db.Authors.Add(obj);
-        //        }
-        //        else
-        //        {
-        //            //this is an update
-        //            _db.Authors.Update(obj);
-        //        }
-        //        _db.SaveChanges();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(obj);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Upsert(BookVM obj)
+        {
+                if (obj.Book.Book_Id == 0)
+                {
+                    //this is create
+                    _db.Books.Add(obj.Book);
+                }
+                else
+                {
+                //this is an update
+                _db.Books.Update(obj.Book);
+                }
+                _db.SaveChanges();
+               return RedirectToAction(nameof(Index));
+        }
 
-        //}
-
-        //public IActionResult Delete(int id)
-        //{
-        //    var objFromDb = _db.Authors.FirstOrDefault(u => u.Author_Id == id);
-        //    _db.Authors.Remove(objFromDb);
-        //    _db.SaveChanges();
-        //    return RedirectToAction(nameof(Index));
-        //}
+        public IActionResult Delete(int id)
+        {
+            var objFromDb = _db.Books.FirstOrDefault(u => u.Book_Id == id);
+            _db.Books.Remove(objFromDb);
+            _db.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
