@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WizLib_Model.Models.Book>
+
+<br />
+<br />
+<div class="border p-4 bg-white">
+    <div class="row">
+        <div class="col-8">
+            <h2 class="text-info"> Book List</h2>
+        </div>
+        <div class=" col-2 ">
+            <a asp-action="PlayGround" class="btn btn-warning form-control">Play Ground</a>
+        </div>
+        <div class=" col-2 text-right">
+            <a asp-action="Upsert" class="btn btn-info form-control"> Create New </a>
+        </div>
+    </div>
+    <br />
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        Title
+                    </th>
+
+                    @*<th>
+                            Publisher
+                        </th>
+                        <th>
+                            Authors
+                        </th>*@
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Title
+                        </td>
+                        @*<td>
+                                @item.Publisher.Name
+                            </td>
+                            <td>
+                                @{
+                                    var authors = "";
+                                }
+                                @foreach(var auth in item.BookAuthors)
+                                {
+                                    authors += @auth.Author.FullName + ", ";
+                                }
+                                @authors.Trim().TrimEnd(',')
+                            </td>*@
+                        <td>
+                            <a class="btn btn-primary text-white" asp-action="Upsert" asp-route-Id="@item.Book_Id">
+                                Edit
+                            </a>
+                            <a class="btn btn-info text-white" asp-action="Details" asp-route-Id="@item.Book_Id">
+                                Details
+                            </a>
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@item.Book_Id">
+                                Delete
+                            </a>
+                            <a class="btn btn-success text-white" asp-action="ManageAuthors" asp-route-Id="@item.Book_Id">
+                                Authors
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No publisher exists...</p>
+        }
+    </div>
+</div>
