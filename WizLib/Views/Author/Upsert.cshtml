@@ -82,14 +82,7 @@
     <script>
 
         $(function () {
-            $("#datepicker_dob").datepicker({
-                minDate: new Date(),
-                onSelect: function (selected) {
-                    var dt = new Date(selected);
-                    dt.setDate(dt.getDate() + 1);
-                    $("#datepicker_out").datepicker("option", "minDate", dt);
-                }
-            });
+            $("#datepicker_dob").datepicker({});
         });
 
     </script>
