@@ -152,6 +152,28 @@ namespace WizLib.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult ManageAuthors(BookAuthorVM bookAuthorVM)
+        {
+            if(bookAuthorVM.BookAuthor.Book_Id!=0 && bookAuthorVM.BookAuthor.Author_Id != 0)
+            {
+                _db.BookAuthors.Add(bookAuthorVM.BookAuthor);
+                _db.SaveChanges();
+            }
+            return RedirectToAction(nameof(ManageAuthors), new { @id = bookAuthorVM.BookAuthor.Book_Id });
+        }
+
+        [HttpPost]
+        public IActionResult RemoveAuthors(int authorId, BookAuthorVM bookAuthorVM)
+        {
+            int bookId = bookAuthorVM.Book.Book_Id;
+            BookAuthor bookAuthor = _db.BookAuthors.FirstOrDefault(
+                u => u.Author_Id == authorId && u.Book_Id == bookId);
+
+            _db.BookAuthors.Remove(bookAuthor);
+            _db.SaveChanges();
+            return RedirectToAction(nameof(ManageAuthors), new { @id = bookId });
+        }
 
         public IActionResult PlayGround()
         {
