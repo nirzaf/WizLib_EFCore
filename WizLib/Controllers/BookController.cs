@@ -127,27 +127,27 @@ namespace WizLib.Controllers
 
         public IActionResult PlayGround()
         {
-            var bookTemp = _db.Books.FirstOrDefault();
-            bookTemp.Price = 100;
+            //var bookTemp = _db.Books.FirstOrDefault();
+            //bookTemp.Price = 100;
 
-            var bookCollection = _db.Books;
-            double totalPrice = 0;
+            //var bookCollection = _db.Books;
+            //double totalPrice = 0;
 
-            foreach (var book in bookCollection)
-            {
-                totalPrice += book.Price;
-            }
+            //foreach (var book in bookCollection)
+            //{
+            //    totalPrice += book.Price;
+            //}
 
-            var bookList = _db.Books.ToList();
-            foreach (var book in bookList)
-            {
-                totalPrice += book.Price;
-            }
+            //var bookList = _db.Books.ToList();
+            //foreach (var book in bookList)
+            //{
+            //    totalPrice += book.Price;
+            //}
 
-            var bookCollection2 = _db.Books;
-            var bookCount1 = bookCollection2.Count();
+            //var bookCollection2 = _db.Books;
+            //var bookCount1 = bookCollection2.Count();
 
-            var bookCount2 = _db.Books.Count();
+            //var bookCount2 = _db.Books.Count();
 
             IEnumerable<Book> BookList1 = _db.Books;
             var FilteredBook1 = BookList1.Where(b => b.Price > 500).ToList();
@@ -155,7 +155,17 @@ namespace WizLib.Controllers
             IQueryable<Book> BookList2 = _db.Books;
             var fileredBook2 = BookList2.Where(b => b.Price > 500).ToList();
 
+            //Updating Related Data
+            var bookTemp1 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 4);
+            bookTemp1.BookDetail.NumberOfChapters = 2222;
+            _db.Books.Update(bookTemp1);
+            _db.SaveChanges();
 
+
+            var bookTemp2 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 4);
+            bookTemp2.BookDetail.Weight = 3333;
+            _db.Books.Attach(bookTemp2);
+            _db.SaveChanges();
 
 
             return RedirectToAction(nameof(Index));
