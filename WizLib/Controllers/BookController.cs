@@ -239,10 +239,15 @@ namespace WizLib.Controllers
             var viewList1 = _db.BookDetailsFromViews.FirstOrDefault();
             var viewList2 = _db.BookDetailsFromViews.Where(u=>u.Price>500);
 
+            //RAW SQL
 
-            //SPROC
+            var bookRaw = _db.Books.FromSqlRaw("Select * from dbo.books").ToList();
 
+            //SQL Injection attack prone
+            int id = 2;
+            var bookTemp1 = _db.Books.FromSqlInterpolated($"Select * from dbo.books where Book_Id={id}").ToList();
 
+            var booksSproc = _db.Books.FromSqlInterpolated($" EXEC dbo.getAllBookDetails {id}").ToList();
 
             return RedirectToAction(nameof(Index));
         }
