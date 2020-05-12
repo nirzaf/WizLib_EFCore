@@ -155,6 +155,13 @@ namespace WizLib.Controllers
             IQueryable<Book> BookList2 = _db.Books;
             var fileredBook2 = BookList2.Where(b => b.Price > 500).ToList();
 
+
+            //var category = _db.Categories.FirstOrDefault();
+            //_db.Entry(category).State = EntityState.Modified;
+
+            //_db.SaveChanges();
+
+
             //Updating Related Data
             var bookTemp1 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 4);
             bookTemp1.BookDetail.NumberOfChapters = 2222;
