@@ -23,15 +23,21 @@ namespace WizLib.Controllers
 
         public IActionResult Index()
         {
-            List<Book> objList = _db.Books.Include(u => u.Publisher).ToList();
-            //foreach (var obj in objList)
-            //{
-            //    //Least Effecient
-            //    //obj.Publisher = _db.Publishers.FirstOrDefault(u => u.Publisher_Id == obj.Publisher_Id);
+            //List<Book> objList = _db.Books.Include(u => u.Publisher).ToList();
+            List<Book> objList = _db.Books.ToList();
+            foreach (var obj in objList)
+            {
+                //Least Effecient
+                //obj.Publisher = _db.Publishers.FirstOrDefault(u => u.Publisher_Id == obj.Publisher_Id);
 
-            //    //Explicit Loading More Efficient
-            //    _db.Entry(obj).Reference(u => u.Publisher).Load();
-            //}
+                //Explicit Loading More Efficient
+                _db.Entry(obj).Reference(u => u.Publisher).Load();
+                _db.Entry(obj).Collection(u => u.BookAuthors).Load();
+                foreach(var bookAuth in obj.BookAuthors)
+                {
+                    _db.Entry(bookAuth).Reference(u => u.Author).Load();
+                }
+            }
             return View(objList);
         }
 
