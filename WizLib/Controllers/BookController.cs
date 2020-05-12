@@ -148,6 +148,16 @@ namespace WizLib.Controllers
             var bookCount1 = bookCollection2.Count();
 
             var bookCount2 = _db.Books.Count();
+
+            IEnumerable<Book> BookList1 = _db.Books;
+            var FilteredBook1 = BookList1.Where(b => b.Price > 500).ToList();
+
+            IQueryable<Book> BookList2 = _db.Books;
+            var fileredBook2 = BookList2.Where(b => b.Price > 500).ToList();
+
+
+
+
             return RedirectToAction(nameof(Index));
         }
     }
