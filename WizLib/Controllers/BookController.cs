@@ -158,12 +158,14 @@ namespace WizLib.Controllers
             //Updating Related Data
             var bookTemp1 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 4);
             bookTemp1.BookDetail.NumberOfChapters = 2222;
+            bookTemp1.Price = 12345;
             _db.Books.Update(bookTemp1);
             _db.SaveChanges();
 
 
             var bookTemp2 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 4);
             bookTemp2.BookDetail.Weight = 3333;
+            bookTemp2.Price = 123456;
             _db.Books.Attach(bookTemp2);
             _db.SaveChanges();
 
