@@ -5,7 +5,7 @@
 <form method="post">
     <div class="row p-3 border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Book.Book_Id" />
+        <input type="hidden" asp-for="Book.Book_Id"/>
         @if (Model.Book != null)
         {
             //edit
@@ -20,7 +20,7 @@
                     <label asp-for="Book.Title"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Book.Title" class="form-control" />
+                    <input asp-for="Book.Title" class="form-control"/>
                     <span asp-validation-for="Book.Title" class="text-danger"></span>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <label asp-for="Book.ISBN"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Book.ISBN" class="form-control" />
+                    <input asp-for="Book.ISBN" class="form-control"/>
                     <span asp-validation-for="Book.ISBN" class="text-danger"></span>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <label asp-for="Book.Price"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Book.Price" class="form-control" />
+                    <input asp-for="Book.Price" class="form-control"/>
                     <span asp-validation-for="Book.Price" class="text-danger"></span>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-8">
                     @Html.DropDownListFor(u => u.Book.Publisher_Id, Model.PublisherList, "--Publisher List--",
-                        new { @class = "form-control" })
+                        new {@class = "form-control"})
                     <span asp-validation-for="Book.Publisher_Id" class="text-danger"></span>
                 </div>
             </div>
@@ -75,6 +75,6 @@
 </form>
 
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
 
 }

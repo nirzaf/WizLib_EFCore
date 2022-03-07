@@ -1,7 +1,7 @@
-﻿@model IEnumerable<WizLib_Model.Models.Category>
+﻿@model IEnumerable<Category>
 
-<br />
-<br />
+<br/>
+<br/>
 <div class="border p-4 bg-white">
     <div class="row">
         <div class="col-9">
@@ -26,7 +26,7 @@
             <a asp-action="RemoveMultiple5" class="btn btn-danger form-control"> Remove 5 </a>
         </div>
     </div>
-    <br />
+    <br/>
     <div>
         @if (Model.Count() > 0)
         {
@@ -37,7 +37,7 @@
                     </th>
                     <th></th>
                 </tr>
-                @foreach (var item in Model)
+                @foreach (Category item in Model)
                 {
                     <tr>
                         <td>

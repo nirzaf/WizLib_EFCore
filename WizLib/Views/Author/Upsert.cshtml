@@ -5,7 +5,7 @@
 <form method="post">
     <div class="row p-3 border">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Author_Id" />
+        <input type="hidden" asp-for="Author_Id"/>
         @if (Model.Author_Id != 0)
         {
             //edit
@@ -20,7 +20,7 @@
                     <label asp-for="FirstName"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="FirstName" class="form-control" />
+                    <input asp-for="FirstName" class="form-control"/>
                     <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <label asp-for="LastName"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="LastName" class="form-control" />
+                    <input asp-for="LastName" class="form-control"/>
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
             </div>
@@ -40,11 +40,11 @@
                 <div class="col-8">
                     @if (Model.Author_Id != 0)
                     {
-                        <input asp-for="BirthDate" placeholder="mm/dd/yyyy" id="datepicker_dob" type="text" class="form-control" />
+                        <input asp-for="BirthDate" placeholder="mm/dd/yyyy" id="datepicker_dob" type="text" class="form-control"/>
                     }
                     else
                     {
-                        <input asp-for="BirthDate" value="" placeholder="mm/dd/yyyy" id="datepicker_dob" type="text" class="form-control" />
+                        <input asp-for="BirthDate" value="" placeholder="mm/dd/yyyy" id="datepicker_dob" type="text" class="form-control"/>
                     }
                     <span asp-validation-for="BirthDate" class="text-danger"></span>
                 </div>
@@ -54,7 +54,7 @@
                     <label asp-for="Location"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Location" class="form-control" />
+                    <input asp-for="Location" class="form-control"/>
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
             </div>
@@ -78,10 +78,10 @@
 </form>
 
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
     <script>
 
-        $(function () {
+        $(function() {
             $("#datepicker_dob").datepicker({});
         });
 

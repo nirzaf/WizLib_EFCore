@@ -5,21 +5,21 @@
         <div class="col-6 form-group">
             <form method="post" action="ManageAuthors" class="row">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Book.Book_Id" />
-                <input type="hidden" asp-for="BookAuthor.Book_Id" />
+                <input type="hidden" asp-for="Book.Book_Id"/>
+                <input type="hidden" asp-for="BookAuthor.Book_Id"/>
 
                 <div class="col-4">
                     <label asp-for="Book.Title"></label>
                 </div>
                 <div class="col-8">
-                    <input type="text" asp-for="Book.Title" class="form-control" disabled />
+                    <input type="text" asp-for="Book.Title" class="form-control" disabled/>
                 </div>
                 <div class="col-4 pt-3">
                     <label asp-for="BookAuthor.Author.FullName"></label>
                 </div>
                 <div class="col-8">
                     @Html.DropDownListFor(u => u.BookAuthor.Author_Id, Model.AuthorList, "--Select Author--",
-                        new { @class = "form-control" })
+                        new {@class = "form-control"})
                 </div>
                 <div class="col-4 offset-4">
                     <button type="submit" class="btn btn-primary form-control">Add Association</button>
@@ -32,17 +32,16 @@
         <div class="col-6">
 
             <form method="post" action="RemoveAuthors">
-                <input type="hidden" asp-for="@Model.Book.Book_Id" />
+                <input type="hidden" asp-for="@Model.Book.Book_Id"/>
                 <div class="row text-right">
                     <div class="col-12 text-right h4 text-primary">
                         Authors Associated to this Book:
                     </div>
                 </div>
-                @foreach (var auth in Model.BookAuthorList)
+                @foreach (BookAuthor auth in Model.BookAuthorList)
                 {
-
                     <div class="row pb-2">
-                        <div class="col-8 text-right" style="font-size:23px;">@auth.Author.FullName</div>
+                        <div class="col-8 text-right" style="font-size: 23px;">@auth.Author.FullName</div>
                         <div class="col-4">
                             <button asp-action="RemoveAuthors" type="submit" class="btn btn-danger form-control" asp-route-authorId="@auth.Author_Id">Remove</button>
                         </div>
@@ -56,5 +55,5 @@
 
 
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
 }
