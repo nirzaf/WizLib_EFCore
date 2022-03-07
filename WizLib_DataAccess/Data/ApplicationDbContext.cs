@@ -19,10 +19,10 @@ public class ApplicationDbContext : DbContext
     public DbSet<Publisher> Publishers { get; set; }
     public DbSet<BookAuthor> BookAuthors { get; set; }
 
-    public DbSet<Fluent_BookDetail> Fluent_BookDetails { get; set; }
-    public DbSet<Fluent_Book> Fluent_Books { get; set; }
-    public DbSet<Fluent_Author> Fluent_Authors { get; set; }
-    public DbSet<Fluent_Publisher> fluent_Publishers { get; set; }
+    public DbSet<Fluent_BookDetail> FluentBookDetails { get; set; }
+    public DbSet<Fluent_Book> FluentBooks { get; set; }
+    public DbSet<Fluent_Author> FluentAuthors { get; set; }
+    public DbSet<Fluent_Publisher> FluentPublishers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,17 +31,13 @@ public class ApplicationDbContext : DbContext
         //category table name and column name
         modelBuilder.Entity<Category>().ToTable("tbl_category");
         modelBuilder.Entity<Category>().Property(c => c.Name).HasColumnName("CategoryName");
-
         //composite key
         modelBuilder.Entity<BookAuthor>().HasKey(ba => new {ba.Author_Id, ba.Book_Id});
-
-
         modelBuilder.ApplyConfiguration(new FluentBookConfig());
         modelBuilder.ApplyConfiguration(new FluentBookDetailsConfig());
         modelBuilder.ApplyConfiguration(new FluentBookAuthorConfig());
         modelBuilder.ApplyConfiguration(new FluentPublisherConfig());
         modelBuilder.ApplyConfiguration(new FluentAuthorConfig());
-
         modelBuilder.Entity<BookDetailsFromView>().HasNoKey().ToView("GetOnlyBookDetails");
     }
 }

@@ -22,4 +22,12 @@
     <ProjectReference Include="..\WizLib_Model\WizLib_Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\Error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\Error.cshtml" />
+  </ItemGroup>
+
 </Project>
