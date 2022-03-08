@@ -206,7 +206,7 @@ namespace WizLib_DataAccess.Migrations
 
                     b.HasKey("Publisher_Id");
 
-                    b.ToTable("fluent_Publishers");
+                    b.ToTable("Fluent_Publishers");
                 });
 
             modelBuilder.Entity("WizLib_Model.Models.Genre", b =>
@@ -222,7 +222,7 @@ namespace WizLib_DataAccess.Migrations
 
                     b.HasKey("GenreId");
 
-                    b.ToTable("tb_Genre");
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("WizLib_Model.Models.Publisher", b =>

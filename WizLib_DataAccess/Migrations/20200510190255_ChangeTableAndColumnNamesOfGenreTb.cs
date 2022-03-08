@@ -12,27 +12,27 @@ namespace WizLib_DataAccess.Migrations
 
             migrationBuilder.RenameTable(
                 name: "Genres",
-                newName: "tb_Genre");
+                newName: "Genre");
 
             migrationBuilder.RenameColumn(
                 name: "GenreName",
-                table: "tb_Genre",
+                table: "Genre",
                 newName: "Name");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_tb_Genre",
-                table: "tb_Genre",
+                name: "PK_Genre",
+                table: "Genre",
                 column: "GenreId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropPrimaryKey(
-                name: "PK_tb_Genre",
-                table: "tb_Genre");
+                name: "PK_Genre",
+                table: "Genre");
 
             migrationBuilder.RenameTable(
-                name: "tb_Genre",
+                name: "Genre",
                 newName: "Genres");
 
             migrationBuilder.RenameColumn(

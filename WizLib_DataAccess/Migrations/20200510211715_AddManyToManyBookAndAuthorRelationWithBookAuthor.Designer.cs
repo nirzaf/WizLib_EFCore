@@ -139,7 +139,7 @@ namespace WizLib_DataAccess.Migrations
 
                     b.HasKey("GenreId");
 
-                    b.ToTable("tb_Genre");
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("WizLib_Model.Models.Publisher", b =>
