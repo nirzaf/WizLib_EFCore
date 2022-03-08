@@ -18,7 +18,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Author> Authors { get; set; }
     public DbSet<Publisher> Publishers { get; set; }
     public DbSet<BookAuthor> BookAuthors { get; set; }
-
     public DbSet<Fluent_BookDetail> FluentBookDetails { get; set; }
     public DbSet<Fluent_Book> FluentBooks { get; set; }
     public DbSet<Fluent_Author> FluentAuthors { get; set; }
@@ -27,7 +26,6 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //we configure fluent API
-
         //category table name and column name
         modelBuilder.Entity<Category>().ToTable("Category");
         modelBuilder.Entity<Category>().Property(c => c.Name).HasColumnName("CategoryName");

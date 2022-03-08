@@ -2,9 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WizLib_DataAccess.Data;
+using static Microsoft.EntityFrameworkCore.DeleteBehavior;
 
 #nullable disable
 
@@ -322,7 +321,7 @@ namespace WizLib_DataAccess.Migrations
                     b.HasOne("WizLib_Model.Models.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("Publisher_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(Cascade)
                         .IsRequired();
 
                     b.Navigation("BookDetail");
@@ -335,13 +334,13 @@ namespace WizLib_DataAccess.Migrations
                     b.HasOne("WizLib_Model.Models.Author", "Author")
                         .WithMany("BookAuthors")
                         .HasForeignKey("Author_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(Cascade)
                         .IsRequired();
 
                     b.HasOne("WizLib_Model.Models.Book", "Book")
                         .WithMany("BookAuthors")
                         .HasForeignKey("Book_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(Cascade)
                         .IsRequired();
 
                     b.Navigation("Author");
@@ -354,13 +353,13 @@ namespace WizLib_DataAccess.Migrations
                     b.HasOne("WizLib_Model.Models.Fluent_BookDetail", "Fluent_BookDetail")
                         .WithOne("Fluent_Book")
                         .HasForeignKey("WizLib_Model.Models.Fluent_Book", "BookDetail_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(Cascade)
                         .IsRequired();
 
                     b.HasOne("WizLib_Model.Models.Fluent_Publisher", "Fluent_Publisher")
                         .WithMany("Fluent_Book")
                         .HasForeignKey("Publisher_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(Cascade)
                         .IsRequired();
 
                     b.Navigation("Fluent_BookDetail");
@@ -373,13 +372,13 @@ namespace WizLib_DataAccess.Migrations
                     b.HasOne("WizLib_Model.Models.Fluent_Author", "Fluent_Author")
                         .WithMany("Fluent_BookAuthors")
                         .HasForeignKey("Author_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(Cascade)
                         .IsRequired();
 
                     b.HasOne("WizLib_Model.Models.Fluent_Book", "Fluent_Book")
                         .WithMany("Fluent_BookAuthors")
                         .HasForeignKey("Book_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(Cascade)
                         .IsRequired();
 
                     b.Navigation("Fluent_Author");

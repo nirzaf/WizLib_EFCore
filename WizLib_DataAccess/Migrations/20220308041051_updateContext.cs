@@ -25,8 +25,8 @@ namespace WizLib_DataAccess.Migrations
                 table: "Fluent_Books");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_tbl_category",
-                table: "tbl_category");
+                name: "PK_Category",
+                table: "Category");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_fluent_Publishers",
@@ -45,7 +45,7 @@ namespace WizLib_DataAccess.Migrations
                 table: "Fluent_Authors");
 
             migrationBuilder.RenameTable(
-                name: "tbl_category",
+                name: "Category",
                 newName: "Category");
 
             migrationBuilder.RenameTable(
@@ -188,7 +188,7 @@ namespace WizLib_DataAccess.Migrations
 
             migrationBuilder.RenameTable(
                 name: "Category",
-                newName: "tbl_category");
+                newName: "Category");
 
             migrationBuilder.RenameIndex(
                 name: "IX_FluentBooks_Publisher_Id",
@@ -221,8 +221,8 @@ namespace WizLib_DataAccess.Migrations
                 column: "Author_Id");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_tbl_category",
-                table: "tbl_category",
+                name: "PK_Category",
+                table: "Category",
                 column: "Category_Id");
 
             migrationBuilder.AddForeignKey(
