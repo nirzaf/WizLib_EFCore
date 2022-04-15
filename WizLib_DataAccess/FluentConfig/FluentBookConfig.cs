@@ -9,14 +9,11 @@ public class FluentBookConfig : IEntityTypeConfiguration<Fluent_Book>
     public void Configure(EntityTypeBuilder<Fluent_Book> modelBuilder)
     {
         //Name Of Table
-
         //Book
         modelBuilder.HasKey(b => b.Book_Id);
-
         modelBuilder.Property(b => b.ISBN).IsRequired().HasMaxLength(15);
         modelBuilder.Property(b => b.Title).IsRequired();
         modelBuilder.Property(b => b.Price).IsRequired();
-
 
         //one to one relation between book and book detail
         modelBuilder

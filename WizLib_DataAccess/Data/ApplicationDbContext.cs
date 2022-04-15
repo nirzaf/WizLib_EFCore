@@ -27,7 +27,6 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //we configure fluent API
-
         //category table name and column name
         modelBuilder.Entity<Category>().ToTable("tbl_category");
         modelBuilder.Entity<Category>().Property(c => c.Name).HasColumnName("CategoryName");

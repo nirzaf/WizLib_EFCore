@@ -92,7 +92,7 @@ public class BookController : Controller
             _db.SaveChanges();
 
             Book BookFromDb = _db.Books.FirstOrDefault(u => u.Book_Id == obj.Book.Book_Id);
-            BookFromDb.BookDetail_Id = obj.Book.BookDetail.BookDetail_Id;
+            BookFromDb.BookDetailId = obj.Book.BookDetail.BookDetail_Id;
             _db.SaveChanges();
         }
         else

@@ -47,12 +47,12 @@
 
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Book.Publisher_Id"></label>
+                    <label asp-for="Book.PublisherId"></label>
                 </div>
                 <div class="col-8">
-                    @Html.DropDownListFor(u => u.Book.Publisher_Id, Model.PublisherList, "--Publisher List--",
+                    @Html.DropDownListFor(u => u.Book.PublisherId, Model.PublisherList, "--Publisher List--",
                         new {@class = "form-control"})
-                    <span asp-validation-for="Book.Publisher_Id" class="text-danger"></span>
+                    <span asp-validation-for="Book.PublisherId" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">

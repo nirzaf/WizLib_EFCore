@@ -14,11 +14,11 @@ public class Book
 
     [Required] public double Price { get; set; }
 
-    [ForeignKey("BookDetail")] public int? BookDetail_Id { get; set; }
+    [ForeignKey("BookDetail")] public int? BookDetailId { get; set; }
 
     public BookDetail BookDetail { get; set; }
 
-    [ForeignKey("Publisher")] public int Publisher_Id { get; set; }
+    [ForeignKey("Publisher")] public int PublisherId { get; set; }
 
     public Publisher Publisher { get; set; }
 
