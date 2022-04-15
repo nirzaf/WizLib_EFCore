@@ -71,7 +71,7 @@ namespace WizLib_DataAccess.Migrations
 
                     b.HasKey("GenreId");
 
-                    b.ToTable("tb_Genre");
+                    b.ToTable("Genre");
                 });
 #pragma warning restore 612, 618
         }

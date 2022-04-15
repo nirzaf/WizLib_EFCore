@@ -2,7 +2,7 @@
 
 namespace WizLib_Model.Models;
 
-[Table("tb_Genre")]
+[Table("Genre")]
 public class Genre
 {
     public int GenreId { get; set; }

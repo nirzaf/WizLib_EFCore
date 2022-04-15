@@ -131,7 +131,7 @@ namespace WizLib_DataAccess.Migrations
 
                     b.HasKey("Category_Id");
 
-                    b.ToTable("tbl_category");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("WizLib_Model.Models.Fluent_Author", b =>
@@ -267,7 +267,7 @@ namespace WizLib_DataAccess.Migrations
 
                     b.HasKey("GenreId");
 
-                    b.ToTable("tb_Genre");
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("WizLib_Model.Models.Publisher", b =>

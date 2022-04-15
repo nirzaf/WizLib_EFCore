@@ -7,7 +7,7 @@ namespace WizLib_DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "tbl_category",
+                name: "Category",
                 columns: table => new
                 {
                     Category_Id = table.Column<int>(type: "int", nullable: false)
@@ -16,14 +16,14 @@ namespace WizLib_DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tbl_category", x => x.Category_Id);
+                    table.PrimaryKey("PK_Category", x => x.Category_Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "tbl_category");
+                name: "Category");
         }
     }
 }
